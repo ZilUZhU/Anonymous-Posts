@@ -7,7 +7,7 @@ import {DynamicColorIOS, Platform} from 'react-native';
 //   light: 'midnightblue',
 // });
 
-const PostsBlock = () => {
+const PostsBlock = ({navigation}) => {
     // Dummy data for posts
     const posts = [
         { id: 1, title: 'Post 1', content: 'Content for post 1' },
@@ -15,6 +15,7 @@ const PostsBlock = () => {
         // { id: 3, title: 'Post 3', content: 'Content for post 3' },
         // Add more posts here
     ];
+    navigation.navigate('signIn')
 
     return (
         <View style={styles.container}>
