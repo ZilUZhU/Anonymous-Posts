@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Button, Text } from 'react-native';
 
-const CreatePostScreen = () => {
+const CreatePosts = ({navigation}) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
   const handleSubmit = () => {
     // Handle the submit action (e.g., send data to a server)
     console.log('Post Submitted', { title, content });
+    navigation.navigate('post')
   };
 
   return (
@@ -53,4 +54,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreatePostScreen;
+export default CreatePosts;

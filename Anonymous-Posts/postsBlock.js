@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Button, TouchableOpacity } from 'react-native';
 import {DynamicColorIOS, Platform} from 'react-native';
 
 // const customDynamicTextColor = DynamicColorIOS({
@@ -7,7 +7,7 @@ import {DynamicColorIOS, Platform} from 'react-native';
 //   light: 'midnightblue',
 // });
 
-const PostsBlock = () => {
+const PostsBlock = ({navigation}) => {
     // Dummy data for posts
     const posts = [
         { id: 1, title: 'Post 1', content: 'Content for post 1' },
@@ -15,6 +15,9 @@ const PostsBlock = () => {
         // { id: 3, title: 'Post 3', content: 'Content for post 3' },
         // Add more posts here
     ];
+    const OnMakeAPost = ()=>{
+        navigation.navigate('createposts')
+    };
 
     return (
         <View style={styles.container}>
@@ -26,7 +29,13 @@ const PostsBlock = () => {
                         <Text>{post.content}</Text>
                     </View>
                 ))}
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => OnMakeAPost()}>
+                    <Text style={styles.buttonTitle}>Make a Post</Text>
+            </TouchableOpacity>
             </ScrollView>
+            
         </View>
     );
 };

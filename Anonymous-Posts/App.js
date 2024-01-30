@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import PostsBlock from './postsBlock';
 import SignIn from './signIn';
+import Registration from './register';
+import CreatePosts from './createPosts';
+import HomeScreen from './home';
+
+import { NavigationContainer } from '@react-navigation/native'
+// import { NavigationContainer, createStackNavigator } from 'react-navigation'
+import { createStackNavigator } from '@react-navigation/stack'
+// import 'react-native-gesture-handler';
 
 import {DynamicColorIOS} from 'react-native';
-import { firebase } from './firebase';
+// import  firebase  from './firebase';
+
+
+// import {decode, encode} from 'base-64'
+// if (!global.btoa) {  global.btoa = encode }
+// if (!global.atob) { global.atob = decode }
 
 // Import the functions you need from the SDKs you need
 // import firebase from '@react-native-firebase/app'
@@ -15,19 +28,19 @@ import { firebase } from './firebase';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyDeEvVMthlX2OdrEEvWV3l7w5et_0fLEoM",
-  authDomain: "anonymous-posts-ad60d.firebaseapp.com",
-  projectId: "anonymous-posts-ad60d",
-  storageBucket: "anonymous-posts-ad60d.appspot.com",
-  messagingSenderId: "905535572264",
-  appId: "1:905535572264:web:6f12022f5cbbb38c24281d",
-  measurementId: "G-JV50XZG4MK"
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDeEvVMthlX2OdrEEvWV3l7w5et_0fLEoM",
+//   authDomain: "anonymous-posts-ad60d.firebaseapp.com",
+//   projectId: "anonymous-posts-ad60d",
+//   storageBucket: "anonymous-posts-ad60d.appspot.com",
+//   messagingSenderId: "905535572264",
+//   appId: "1:905535572264:web:6f12022f5cbbb38c24281d",
+//   measurementId: "G-JV50XZG4MK"
+// };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
 
 const customDynamicTextColor = DynamicColorIOS({
   dark: 'lightskyblue',
@@ -44,10 +57,17 @@ const customContrastDynamicTextColor = DynamicColorIOS({
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
+const Stack = createStackNavigator();
+
 const App = () => {
+  
   return (
-    <View style={styles.container}>
+    <NavigationContainer>
+      {/* <StatusBar style='auto' /> */}
       <Text style={styles.title}>Page Title?</Text>
+      <Stack.Navigator>
+    {/* <View style={styles.container}>
+      <Text style={styles.title}>Page Title?</Text> */}
       {/* <View style={styles.contentContainer}>
         <View style={styles.block}>
           <Text>Content Block 1</Text>
@@ -64,8 +84,22 @@ const App = () => {
 
       </View> */}
       {/* <SignIn/> */}
+      {/* <Stack.Screen name="Home">
+      <Text style={styles.title}>Home</Text>
+        </Stack.Screen>
+        <Stack.Screen name="/">
+      <Text style={styles.title}>?</Text>
+        </Stack.Screen> */}
+        <Stack.Screen name="home" component={HomeScreen}></Stack.Screen>
+        <Stack.Screen name="post" component={PostsBlock}></Stack.Screen>
+        {/* <Stack.Screen name="post2" component={PostsBlock}></Stack.Screen> */}
+        <Stack.Screen name="signin" component={SignIn}></Stack.Screen>
+        <Stack.Screen name="register" component={Registration}></Stack.Screen>
+        <Stack.Screen name="createposts" component={CreatePosts}></Stack.Screen>
 
-    </View>
+    {/* </View> */}
+    </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
