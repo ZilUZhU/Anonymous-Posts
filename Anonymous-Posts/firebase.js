@@ -1,8 +1,9 @@
 // Import the functions you need from the SDKs you need
 // import firebase from '@react-native-firebase/app'
 import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 // import { getAnalytics } from "firebase/analytics";
-// import { getAuth } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 // import * as firebase from 'firebase';
 // import '@firebase/auth';
 // import '@firebase/firestore';
@@ -23,9 +24,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// export const auth = getAuth();
-// if (!firebase.apps.length) {
-//     firebase.initializeApp(firebaseConfig);
-// }
 
-export { firebase };
+// if (!firebase.apps.length) {
+//   firebase.initializeApp(firebaseConfig);
+// }
+const auth = getAuth();
+export { auth };
