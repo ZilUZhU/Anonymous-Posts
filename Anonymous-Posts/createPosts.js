@@ -1,15 +1,40 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Button, Text } from 'react-native';
+import { collection, addDoc } from "firebase/firestore"; 
+import { db } from './firebase';
 
 const CreatePosts = ({navigation}) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-
-  const handleSubmit = () => {
-    // Handle the submit action (e.g., send data to a server)
-    console.log('Post Submitted', { title, content });
-    navigation.navigate('post')
+  const handleSubmit = async () => {
+    try {
+      const docRef = await addDoc(collection(db, "posts"), {
+        title: title,
+        content: content
+      });
+      console.log("Post submitted with ID: ", docRef.id);
+      navigation.navigate('post');
+    } catch (e) {
+      console.error("Error adding post: ", e);
+      alert(e);
+    }
   };
+  
+  // const handleSubmit = () => {
+  //   // Handle the submit action (e.g., send data to a server)
+  //   try {
+  //     const docRef = addDoc(collection(db, "posts"), {
+  //       "title": title,
+  //       "content": content
+  //     });
+  //     console.log("post submit with ID: ", docRef.id);
+  //   } catch (e) {
+  //     console.error("Error adding post: ", e);
+  //   }
+  //   console.log('Post Submitted', { title, content });
+  //   navigation.navigate('post')
+
+  // };
 
   return (
     <View style={styles.container}>
@@ -37,6 +62,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    marginTop: 40,
   },
   label: {
     fontSize: 16,
