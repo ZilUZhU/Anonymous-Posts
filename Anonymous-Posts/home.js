@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Button, StyleSheet, Text } from 'react-native';
-// import WeatherDisplay from './location';
+import WeatherDisplay from './location';
 
 const HomeScreen = ({ navigation }) => {
 
@@ -16,7 +16,7 @@ const HomeScreen = ({ navigation }) => {
         title="Register" 
         onPress={() => navigation.navigate('register')} 
       />
-      {/* <WeatherDisplay/> */}
+      <WeatherDisplay/>
     </View>
   );
 };

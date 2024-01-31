@@ -32,9 +32,16 @@
       // "@react-native-firebase/app",
       // "@react-native-firebase/auth",
       // "@react-native-firebase/crashlytics",
-      ["expo-camera", {
-        "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
-      }]
+    //   ["expo-camera", {
+    //     "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
+    //   },
+    // ]
+    [
+      "expo-location",
+      {
+        "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+      }
+    ]
     ]
   }
 }
