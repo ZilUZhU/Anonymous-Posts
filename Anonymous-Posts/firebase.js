@@ -15,7 +15,7 @@ const firebaseConfig = {
   appId: "1:905535572264:web:6f12022f5cbbb38c24281d",
   measurementId: "G-JV50XZG4MK"
 };
-
+window.navigator.userAgent = "ReactNative";
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
