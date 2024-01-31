@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     buttonTitle: {
-        color: 'white',
+        color: 'gold',
         fontSize: 16,
         fontWeight: "bold"
     },

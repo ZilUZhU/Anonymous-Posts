@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, TextInput, Button, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import "firebase/compat/auth";
 
 import 'firebase/auth';
@@ -43,7 +43,9 @@ const SignIn = ({navigation}) => {
         style = {styles.input}
       />
       {errorMessage && <Text>{errorMessage}</Text>}
-      <Button style={styles.button} title="Sign In" onPress={handleSignIn} />
+      <TouchableOpacity style={styles.button}  onPress={handleSignIn} >
+      <Text style={styles.buttonTitle}>Sign In</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -74,6 +76,11 @@ button: {
   borderRadius: 5,
   alignItems: "center",
   justifyContent: 'center'
+},
+buttonTitle: {
+  color: 'gold',
+  fontSize: 16,
+  fontWeight: "bold"
 },
 });
 
