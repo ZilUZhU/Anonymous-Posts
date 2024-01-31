@@ -1,30 +1,30 @@
 import React, { useState } from 'react'
 import { Image, Text, TextInput, TouchableOpacity, View, StyleSheet, ScrollView } from 'react-native'
 // import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import {createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase';
 
 
-function Registration({navigation}) {
+function Registration({ navigation }) {
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    
+
     const onFooterLinkPress = () => {
         navigation.navigate('signin')
     }
 
     const onRegisterPress = () => {
         createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // User registered successfully
-        // You can navigate to the home screen or display a success message
-        alert('you are successfully registered')
-      })
-      .catch((error) => {
-        setErrorMessage(error.message);
-      });
+            .then((userCredential) => {
+                // User registered successfully
+                // You can navigate to the home screen or display a success message
+                alert('you are successfully registered')
+            })
+            .catch((error) => {
+                setErrorMessage(error.message);
+            });
     }
 
     return (
